@@ -1,12 +1,13 @@
 <!DOCTYPE>
 <html lang="en">
 <head>
-    <title>Register</title>
     <meta charset="utf-8">
+    <title>Register</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <form enctype="multipart/form-data" method="POST" action="/">
+    <form enctype="multipart/form-data" method="POST" onsubmit="return validateForm()"action="/">
         <fieldset>
             <h1>Register</h1> 
             <div>
@@ -14,25 +15,32 @@
                 <label class="input-register">File: <input type="file" name="photo" accept="image/*"></label>
             </div>   
             <div>
-                <p class="p-register" >Username</p>
-                <input class="input-register" placeholder="Username"  autofocus="true" type="text">
+                <p class="p-register"> Username 
+                    <span id="notify_0" style="color: white">forget to put username!!</span> 
+                </p> 
+                <input id="username" class="input-register" placeholder="Username"  autofocus="true" type="text">
             </div>
             <div>
-                <p class="p-register">Password</p>
-                <input class="input-register" placeholder="Password"  autofocus="true" type="text">
+                <p class="p-register"> Password 
+                    <span id="notify_1" style="color: white">forget to put password!</span> 
+                </p>
+                <input id="password" class="input-register" placeholder="Password"  autofocus="true" type="text">
             </div>
             <div>
-                <p class="p-register">Password(Confirm)</p>
-                <input class="input-register" placeholder="Type your password again"  autofocus="true" type="text">
+                <p class="p-register">Password(Confirm)
+                    <span id="notify_2" style="color: white">forget to put password(confirm)!</span> 
+                </p>
+                <input id="confirm" class="input-register" placeholder="Type your password again"  autofocus="true" type="text">
             </div>
             <div>
-                <p class="p-register">Passport</p>
-                <input class="input-register" placeholder="Valid passport"  autofocus="true" type="text">
+                <p class="p-register">Passport
+                    <span id="notify_3" style="color: white">forget to put password!</span> 
+                </p>
+                <input id="passport" class="input-register" placeholder="Valid passport"  autofocus="true" type="text">
             </div>
-            <button class="input-login">Register</button>
-
-        
+            <button id="btn_register"class="input-login">Register</button>
         </fieldset>
     </form>
+    <script src="/script.js"></script>
 </body>
 </html>
