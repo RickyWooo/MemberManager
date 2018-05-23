@@ -1,0 +1,33 @@
+/* css for index */
+
+h1{
+    text-align: center;
+}
+.form-login{
+    margin: 8% 30% 10%;
+    width: 30%;
+    height: 80%;
+    border: 2px solid rgb(0, 0, 0);
+    padding: 30px;
+}
+.input-login{
+    margin: 5px 25px 15px;
+    height: 60px;
+    width: 400px;
+    font-size: 30px;
+}
+
+
+/* css for register */
+.input-register{
+    margin: 5px 25px 15px;
+    height: 40px;
+    width: 400px;
+    font-size: 20px;
+}
+
+.p-register{
+    margin: 5px 25px 5px;
+    font-size: 26px;
+    font-display: bold;
+}
