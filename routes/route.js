@@ -5,13 +5,13 @@ module.exports = function(app){
     var MongoClient = require('mongodb').MongoClient;
     var assert = require('assert');
 
-    var url = 'mongodb://localhost:27017/manager'; //name of the database
+    var url = 'mongodb://localhost:27017/manager';
     
     app.get('/', (req, res)=>{  
         res.sendFile( __dirname + '/public/index.html');
     });
 
-    app.get('/register', (req, res)=>{  
+    app.get('/register', (req, res)=>{ 
         res.sendFile( __dirname + '/public/register.html');
     });
 
@@ -39,10 +39,48 @@ module.exports = function(app){
             client.close();
         });
         uploadFile(req);
-
-        //res.sendFile( __dirname + '/public/index.html');
+        
         res.sendFile( path.resolve(__dirname,'..') + '/public/index.html');
     })
+
+    app.post('/dashboard', (req, res)=>{  
+        if(req.body.name == "" || req.body.password == ""){
+            res.status(404).send('<h1>Missing username or password!</h1>');
+            res.redirect("/");
+        }
+       
+        MongoClient.connect(url, { useNewUrlParser: true }, (err, client)=>{
+            if(err){
+                console.log("Unable to connect to the server",err); }
+            else{
+                console.log("Connection Established.");}
+
+            
+            var db = client.db("user");
+            var username = req.body.name;
+
+            db.collection("user", (err, collection)=>{
+                collection.find({"username":username}).toArray((err, items)=>{
+                    if( items.length  == 0) { // invalid username
+                
+                        
+                    }
+                    else if ( hash(req.body.password) != items[0].password ){
+                        res.status(404).send('<h1>Invalid password</h1>');
+                        res.redirect("/");
+                    }
+                    console.log("login successfully.")
+                    console.log(items);
+                    
+                });
+            });
+            
+            client.close();
+            
+        });
+
+        res.sendFile( path.resolve(__dirname,'..')  + '/public/dashboard.html');
+    });
 
     function uploadFile(req){
         var form = new formidable.IncomingForm();
@@ -61,5 +99,4 @@ module.exports = function(app){
     function hash(str){
         return require('crypto').createHash('md5').update(str).digest("hex");
     }
-
 }
