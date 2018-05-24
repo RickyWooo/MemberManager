@@ -7,24 +7,24 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <form enctype="multipart/form-data" method="POST" onsubmit="return validateForm()"action="/">
+    <form  method="post" onsubmit="return validateForm()" action="/">
         <fieldset>
             <h1>Register</h1> 
             <div>
                 <p class="p-register">Upload Company license for authentication</p>
-                <label class="input-register">File: <input type="file" name="photo" accept="image/*"></label>
+                <label class="input-register">File: <input id="upload" type="file" name="photo" accept="image/*"></label>
             </div>   
             <div>
                 <p class="p-register"> Username 
                     <span id="notify_0" style="color: white">forget to put username!!</span> 
                 </p> 
-                <input id="username" class="input-register" placeholder="Username"  autofocus="true" type="text">
+                <input id="username" name="name" class="input-register" placeholder="Username"  autofocus="true" type="text">
             </div>
             <div>
                 <p class="p-register"> Password 
                     <span id="notify_1" style="color: white">forget to put password!</span> 
                 </p>
-                <input id="password" class="input-register" placeholder="Password"  autofocus="true" type="text">
+                <input id="password" name="password" class="input-register" placeholder="Password"  autofocus="true" type="text">
             </div>
             <div>
                 <p class="p-register">Password(Confirm)
@@ -36,11 +36,12 @@
                 <p class="p-register">Passport
                     <span id="notify_3" style="color: white">forget to put password!</span> 
                 </p>
-                <input id="passport" class="input-register" placeholder="Valid passport"  autofocus="true" type="text">
+                <input id="passport" name="passport" class="input-register" placeholder="Valid passport"  autofocus="true" type="text">
             </div>
             <button id="btn_register"class="input-login">Register</button>
         </fieldset>
     </form>
     <script src="/script.js"></script>
+    <script src="../routes/route.js"></script>
 </body>
 </html>

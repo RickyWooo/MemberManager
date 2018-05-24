@@ -1,13 +1,19 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var bodyParser = require('body-parser');
 
 var app = express();
-var formidable = require('formidable');
 
 // provide static files
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname,'public')));
 
+// route
+require('./routes/route')(app);
+
+/*
 app.get('/', (req, res)=>{  
     res.sendFile( __dirname + '/public/index.html');
 });
@@ -50,7 +56,7 @@ MongoClient.connect(url, (err, db)=>{
 
 
 
-
+*/
 
 const port = process.env.PORT || 3000;
 http.createServer(app).listen(port, function(){

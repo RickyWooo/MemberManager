@@ -40,4 +40,9 @@ function validateForm() {
         alert("Please fill out the form.");
         return false;
     }
+    else if(!$("#upload").val()){
+        alert("Please upload company license for authentication");
+        return false;
+    }
+    return true;
 }
