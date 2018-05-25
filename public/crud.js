@@ -15,13 +15,17 @@ function update(btnId){
     var index = parseInt(btnId.slice(-1));
     $("#editboard").fadeIn();
     $("#store").click( ()=>{
+        var reg = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
+        
         var new_name = document.getElementById('new_name').value.toString();
         var new_birth = document.getElementById('new_birth').value.toString();
-        
-        if( new_name != '' && new_birth != ''){
-            var obj = {'user':new_name, 'birth':new_birth};
-            member[index] = obj;
+        if(reg.test(new_birth)){
+            if( new_name != '' && new_birth != ''){
+                var obj = {'user':new_name, 'birth':new_birth};
+                member[index] = obj;
+            }
         }
+        
         document.getElementById('new_name').value = '';
         document.getElementById('new_birth').value = '';
 
