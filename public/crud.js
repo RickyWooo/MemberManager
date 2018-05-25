@@ -5,6 +5,12 @@ var member = [ {'user':'Ricky' , 'birth':'1995-05-14'},
                {'user':'Leo'   , 'birth':'1995-05-09'},
                {'user':'Monica', 'birth':'1992-10-07'} ]
 
+function erase(btnId){
+    var index = parseInt(btnId.slice(-1));
+    member.splice(index,1);
+    show();
+}
+
 function update(btnId){
     var index = parseInt(btnId.slice(-1));
     $("#editboard").fadeIn();
@@ -46,7 +52,10 @@ function show(){
             data = data + '<tr>';
             data = data + '<td>' + member[i]['user']  + '</td>' +
                           '<td>' + member[i]['birth'] + '</td>' +
-                          '<td>' + '<button onclick="update(this.id)" type="submit" id="'+'button'+i+'">edit</button>'; 
+                          '<td>' + '<button onclick="update(this.id)" type="submit" id="'+
+                          'button'+i+'">edit</button>'+
+                          '<td>' + '<button onclick="erase(this.id)" type="submit" id="'+
+                          'delete'+i+'">delete</button>'; 
             data = data + '</tr>';
         }
     }

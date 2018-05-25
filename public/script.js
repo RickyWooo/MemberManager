@@ -25,7 +25,6 @@ $("#confirm").blur( ()=>{
     }
 });
 
-
 $("#passport").blur( ()=>{
     if( !$("#passport").val() ){
         $("#notify_3").css('color','red');
@@ -38,6 +37,10 @@ $("#passport").blur( ()=>{
 function validateForm() {
     if ( !$("#username").val() || !$("#password").val() || !$("#confirm").val() || !$("#passport").val() ) {
         alert("Please fill out the form.");
+        return false;
+    }
+    else if ( $("#password").val() != $("#confirm").val() ){
+        alert("Password must match password(confirm)");
         return false;
     }
     else if(!$("#upload").val()){
